@@ -55,4 +55,20 @@ Proof.
     }
 Qed.
 
+Theorem plus_assoc:
+    forall n m o : num, plus (plus n m) o = plus n (plus m o).
+Proof.
+    intros.
+    induction n as [| n' IH].
+    {
+        do 2 rewrite plus_zero.
+        reflexivity.
+    }
+    {
+        do 3 rewrite plus_succ_comm.
+        rewrite IH.
+        reflexivity.
+    }
+Qed.
+
 End Natural.
